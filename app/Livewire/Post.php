@@ -46,7 +46,7 @@ class Post extends Component
     * Open Add Post form
     * @return void
     */
-    public function addPost() {
+    public function addNewPost() {
         $this->resetFields();
         $this->addPost = true;
         $this->updatePost = false;
@@ -89,7 +89,7 @@ class Post extends Component
     * update the post data
     * @return void
     */
-    public function updatePost() {
+    public function updateOldPost() {
         $this->validate();
         Posts::find($this->postId)->update([
             'title' => $this->title,

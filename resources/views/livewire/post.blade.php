@@ -1,5 +1,5 @@
 <div>
-    <div class="col-md-8 mb-2">
+    <div class="col-12 mb-2">
         @if (session()->has('success'))
             <div class="alert alert-success" role="alert">
                 {{ session()->get('success') }}
@@ -23,10 +23,13 @@
 
     <div class="col-12">
         <div class="card">
+            @if(!$addPost)
+                <div class="m-2 text-end">
+                    <button wire:click="addNewPost()" class="btn btn-primary btn-sm float-end">Add New Post</button>
+                </div>
+            @endif
             <div class="card-body">
-                @if(!$addPost)
-                <button wire:click="addPost()" class="btn btn-primary btn-sm float-right">Add New Post</button>
-                @endif
+                
                 <div class="table-responsive">
                     <table class="table">
                         <thead>
@@ -64,7 +67,8 @@
                 </div>
             </div>
         </div>
-    </div>    
+    </div>  
+  
     <script>
         function deletePost(id){
             if(confirm("Are you sure to delete this record?"))

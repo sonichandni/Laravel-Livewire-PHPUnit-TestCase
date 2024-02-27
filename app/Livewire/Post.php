@@ -44,7 +44,8 @@ class Post extends Component
         $temp_posts = Posts::select('id', 'title', 'description');
 
         if(!empty($this->search)) {
-            $temp_posts->where('title', 'like', '%'.$this->search.'%');
+            $temp_posts->where('title', 'like', '%'.$this->search.'%')
+                        ->orWhere('description', 'like', '%'.$this->search.'%');
         }
 
         $temp_posts = $temp_posts->get();

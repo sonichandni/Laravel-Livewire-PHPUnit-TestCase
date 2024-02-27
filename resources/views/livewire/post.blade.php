@@ -72,7 +72,7 @@
     <script>
         function deletePost(id){
             if(confirm("Are you sure to delete this record?"))
-                window.livewire.emit('deletePostListner',id);
+                Livewire.dispatch('deletePostListner', {'id': id});
         }
     </script>
 </div>

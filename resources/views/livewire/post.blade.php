@@ -24,12 +24,12 @@
     <div class="col-12">
         <div class="card">
             @if(!$addPost)
-                <div class="m-2 text-end">
+                <div class="m-2 d-flex justify-content-between">
+                    <input type="text" class="form-control w-25" wire:model.live="search" placeholder="Search Here...">
                     <button wire:click="addNewPost()" class="btn btn-primary btn-sm float-end">Add New Post</button>
                 </div>
             @endif
             <div class="card-body">
-                
                 <div class="table-responsive">
                     <table class="table">
                         <thead>
@@ -46,7 +46,7 @@
                                         <td>
                                             {{$post->title}}
                                         </td>
-                                        <td>
+                                        <td width="60%">
                                             {{$post->description}}
                                         </td>
                                         <td>

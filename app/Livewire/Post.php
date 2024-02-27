@@ -9,6 +9,9 @@ class Post extends Component
 {
     public $posts, $title, $description, $postId, $updatePost = false, $addPost = false;
 
+    #[Url] 
+    public $search = '';
+
     /**
     * delete action listener
     */
@@ -38,7 +41,15 @@ class Post extends Component
     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
     */
     public function render() {
-        $this->posts = Posts::select('id', 'title', 'description')->get();
+        $temp_posts = Posts::select('id', 'title', 'description');
+
+        if(!empty($this->search)) {
+            $temp_posts->where('title', 'like', '%'.$this->search.'%');
+        }
+
+        $temp_posts = $temp_posts->get();
+
+        $this->posts = $temp_posts;
         return view('livewire.post');
     }
 
